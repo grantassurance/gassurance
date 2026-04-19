@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grant Assurance | Independent Assurance for Responsible Sourcing</title>
+<meta name="description" content="Assurance for responsible sourcing. Independent regulatory due diligence, certification auditing and sustainability compliance for land-use and forest-risk commodities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --forest-mid: #2d5c40;
+    --forest-light: #4a8a60;
+    --sage: #8fad94;
+    --cream: #f5f0e8;
+    --warm-white: #faf9f6;
+    --ink: #1c1c1a;
+    --ink-mid: #3d3d38;
+    --ink-light: #6b6b63;
+    --rule: #d4cfc4;
+    --accent: #c8a96e;
+    --accent-deep: #9c7d47;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,249,246,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .nav-logo-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: var(--forest);
+  }
+  .nav-logo-name span { color: var(--accent-deep); }
+  .nav-logo-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    letter-spacing: 0.06em !important;
+  }
+  .nav-cta:hover { background: var(--forest-mid) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-left {
+    background: var(--forest);
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--sage);
+    line-height: 1.75;
+    max-width: 420px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--forest);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #dbbe82; }
+  .btn-outline {
+    border: 1px solid rgba(143,173,148,0.5);
+    color: var(--sage);
+    padding: 14px 32px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--sage); color: var(--cream); }
+  .hero-right {
+    background: var(--cream);
+    padding: 80px 80px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-credentials {
+    margin-bottom: 48px;
+  }
+  .credential-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 16px;
+  }
+  .credential-list { list-style: none; }
+  .credential-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px;
+    color: var(--ink-mid);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+  .credential-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--forest-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .stat-box {
+    padding: 24px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: white;
+  }
+  .stat-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 36px;
+    color: var(--forest);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 96px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--forest-light);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .section-intro {
+    font-size: 17px;
+    color: var(--ink-mid);
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 60px;
+    font-weight: 300;
+  }
+
+  /* SERVICES GRID */
+  .services-bg { background: var(--warm-white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .service-card {
+    background: var(--warm-white);
+    padding: 36px 32px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .service-card:hover { background: white; }
+  .service-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .service-card h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .service-card p {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+  .service-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--forest-light);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .service-card:hover .service-link { border-color: var(--forest-light); }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-left .section-title { color: var(--cream); }
+  .about-left .section-label { color: var(--sage); }
+  .about-text {
+    font-size: 16px;
+    color: var(--sage);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .about-text strong { color: var(--cream); font-weight: 500; }
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.1);
+  }
+  .about-spec {
+    background: rgba(255,255,255,0.05);
+    padding: 28px 24px;
+  }
+  .spec-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .spec-content {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+
+  /* REGIONS */
+  .regions-section { background: var(--cream); }
+  .regions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 60px;
+  }
+  .region-item {
+    background: var(--cream);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .region-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .region-detail {
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--warm-white); }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .contact-left h2 { margin-bottom: 20px; }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contact-detail-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-weight: 500;
+    min-width: 80px;
+    padding-top: 2px;
+  }
+  .contact-detail-value {
+    font-size: 15px;
+    color: var(--ink-mid);
+  }
+  .contact-detail-value a { color: var(--forest-light); }
+  form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--rule);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--forest-light); }
+  textarea { height: 120px; resize: vertical; }
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b63' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--ink-light);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy { font-size: 12px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-cta-group { animation-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 40px; }
+    .container { padding: 0 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .regions-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-name">Grant <span>Assurance</span></span>
+    <span class="nav-logo-tag">Assurance for responsible sourcing</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Independent Assurance Consultancy</p>
+    <h1 class="hero-title">Assurance<br>you can<br><em>rely on</em></h1>
+    <p class="hero-sub">Regulatory due diligence, certification auditing and sustainability compliance for land-use and forest-risk commodities — delivered with over 30 years of field experience.</p>
+    <div class="hero-cta-group">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-credentials">
+      <p class="credential-label">Core competencies</p>
+      <ul class="credential-list">
+        <li>EUDR due diligence systems and implementation</li>
+        <li>FSC &amp; PEFC certification auditing and support</li>
+        <li>Supply chain risk assessment and traceability</li>
+        <li>ISCC auditing and renewable energy compliance</li>
+        <li>GIS mapping and geospatial analysis</li>
+        <li>Carbon and GHG verification services</li>
+        <li>Sustainable finance and ESG due diligence for forestry investment</li>
+      </ul>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years in forestry certification &amp; supply chain assurance</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">SE<br>Asia</div>
+        <div class="stat-label">Primary regional focus, with global coverage</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Distinct service areas from due diligence to GIS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">UK</div>
+        <div class="stat-label">Based in Christchurch, serving international clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="container">
+    <p class="section-label">What we do</p>
+    <h2 class="section-title">Our services</h2>
+    <p class="section-intro">We provide independent assurance across the full spectrum of sourcing compliance and sustainable investment — from regulatory due diligence to GIS mapping and ESG advisory for forestry finance.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">01</p>
+        <h3>Regulatory Due Diligence</h3>
+        <p>EUDR, UKTR, Lacey Act and Australian ILPR due diligence systems. Supplier onboarding, risk assessment, DDS procedures and TRACES workflow support for timber, coffee, palm, soy and other land-use commodities.</p>
+        <a href="services.html#due-diligence" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">02</p>
+        <h3>Risk Assessment &amp; Sourcing Assurance</h3>
+        <p>Country, jurisdiction, species and supply chain risk assessments. Enhanced desk-based due diligence, legality and sustainability assessments, and responsible sourcing frameworks for buyers and importers.</p>
+        <a href="services.html#risk-assessment" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">03</p>
+        <h3>Certification, Auditing &amp; Assurance</h3>
+        <p>FSC and PEFC Chain of Custody auditing, certification readiness support, material accounting review, trademark compliance, group scheme support and ISO-based internal audit services.</p>
+        <a href="services.html#certification" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">04</p>
+        <h3>Renewable Energy &amp; Biofuel Certification</h3>
+        <p>ISCC auditing, RED II compliance, renewable feedstock and biomass supply chain due diligence, and sustainability assessments for biofuel, biomethane and biomass energy supply chains.</p>
+        <a href="services.html#renewable" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">05</p>
+        <h3>Carbon, GHG &amp; Environmental Data</h3>
+        <p>ISO 14064-related verification preparation, GHG accounting, carbon footprinting, deforestation data analysis and support for clients requiring credible evidence for environmental claims and reporting.</p>
+        <a href="services.html#carbon" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">06</p>
+        <h3>Advisory, Training &amp; Systems Design</h3>
+        <p>Policy and SOP development, EUDR and FSC/PEFC client training, gap analysis, scoping exercises, supply chain data tools, audit checklists and strategic advice on assurance models and market access.</p>
+        <a href="services.html#advisory" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">07</p>
+        <h3>Sustainable Finance &amp; ESG Advisory</h3>
+        <p>ESG due diligence, fund deployment support and environmental and social compliance for forestry and land-use asset acquisitions. Advisory services for private equity, institutional investors and pension funds with exposure to forest and agriculture sectors.</p>
+        <a href="services.html#finance" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <p class="service-num">08</p>
+        <h3>GIS &amp; Geospatial Support</h3>
+        <p>ArcGIS and QGIS map development, farm and concession polygon mapping for EUDR compliance, geolocation data cleaning and validation, spatial risk analysis and geospatial evidence preparation for regulatory requirements.</p>
+        <a href="services.html#gis" class="service-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-left">
+        <p class="section-label">About Grant Assurance</p>
+        <h2 class="section-title">Independent expertise,<br>delivered with integrity</h2>
+        <p class="about-text">Grant Assurance is an independent consultancy providing <strong>supply chain assurance, regulatory compliance, certification auditing and sustainable finance advisory</strong> services to operators, traders, buyers, investors and certification bodies across the globe.</p>
+        <p class="about-text">With over <strong>30 years of experience</strong> spanning forestry, land-use commodities and environmental compliance, our work draws on a career that has taken us from forest contracting in Scandinavia to senior roles at the World Resources Institute in Washington DC, forest investment management in Southeast Asia, and business development leadership in the certification sector.</p>
+        <p class="about-text">We have held senior positions with leading international organisations working across Indonesia, China, Singapore, the USA and the UK — including establishing certification programmes, managing ESG compliance for forestry fund acquisitions, and leading due diligence for corporate investors. Our career also spans <strong>sustainable finance</strong>, including ESG due diligence, fund deployment and environmental and social compliance for forestry and land-use asset acquisitions on behalf of private equity and institutional investors.</p>
+        <p class="about-text">We now provide independent advisory and assurance services to clients in the forestry and agriculture sectors, combining deep technical knowledge with practical, commercially aware delivery.</p>
+        <a href="#contact" class="btn-primary" style="align-self:flex-start;">Discuss a project</a>
+      </div>
+      <div class="about-right">
+        <div class="about-spec">
+          <p class="spec-title">Standards</p>
+          <p class="spec-content">FSC · PEFC · ISCC · ISO 9001 · ISO 14001 · ISO 14064 · IFC PS</p>
+        </div>
+        <div class="about-spec">
+          <p class="spec-title">Regulation</p>
+          <p class="spec-content">EUDR · UKTR · Lacey Act · Australian ILPR · RED II</p>
+        </div>
+        <div class="about-spec">
+          <p class="spec-title">Commodities</p>
+          <p class="spec-content">Timber · Coffee · Palm · Soy · Biomass · Cocoa · Cattle</p>
+        </div>
+        <div class="about-spec">
+          <p class="spec-title">Finance</p>
+          <p class="spec-content">Private Equity · Institutional Funds · Pension Funds · ESG Due Diligence</p>
+        </div>
+        <div class="about-spec">
+          <p class="spec-title">Regions</p>
+          <p class="spec-content">UK · SE Asia · Indonesia · China · USA · Africa · Europe</p>
+        </div>
+        <div class="about-spec">
+          <p class="spec-title">Tools</p>
+          <p class="spec-content">ArcGIS · QGIS · TRACES · Geolocation Verification</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">Start a conversation</h2>
+        <p class="section-intro" style="margin-bottom: 40px;">Whether you need support with EUDR compliance, certification readiness or supply chain risk — we are happy to discuss your requirements.</p>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value"><a href="mailto:info@gassurance.com">info@gassurance.com</a></span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Location</span>
+          <span class="contact-detail-value">Christchurch, England, UK</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Coverage</span>
+          <span class="contact-detail-value">UK, Southeast Asia, Africa &amp; Europe</span>
+        </div>
+      </div>
+      <div>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+          </div>
+          <input type="text" name="organisation" placeholder="Organisation">
+          <select name="service">
+            <option value="" disabled selected>Area of interest</option>
+            <option>Regulatory Due Diligence (EUDR / UKTR)</option>
+            <option>Risk Assessment &amp; Sourcing Assurance</option>
+            <option>Certification &amp; Auditing (FSC / PEFC)</option>
+            <option>Renewable Energy &amp; ISCC</option>
+            <option>Carbon &amp; GHG Services</option>
+            <option>Advisory &amp; Training</option>
+            <option>GIS &amp; Geospatial Support</option>
+            <option>General Enquiry</option>
+          </select>
+          <textarea name="message" placeholder="Brief description of your requirements"></textarea>
+          <button type="submit" class="btn-primary" style="align-self:flex-start; display:inline-block; cursor:pointer;">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex; flex-direction:column; line-height:1.2;">
+    <span class="footer-logo">Grant <span>Assurance</span></span>
+    <span style="font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8fad94; margin-top:3px;">Assurance for responsible sourcing</span>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Grant Assurance. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

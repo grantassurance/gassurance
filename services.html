@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Grant Assurance</title>
+<meta name="description" content="Full range of supply chain assurance, regulatory due diligence, certification auditing and GIS services from Grant Assurance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --forest-mid: #2d5c40;
+    --forest-light: #4a8a60;
+    --sage: #8fad94;
+    --cream: #f5f0e8;
+    --warm-white: #faf9f6;
+    --ink: #1c1c1a;
+    --ink-mid: #3d3d38;
+    --ink-light: #6b6b63;
+    --rule: #d4cfc4;
+    --accent: #c8a96e;
+    --accent-deep: #9c7d47;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 16px; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,249,246,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 18px; letter-spacing: 0.02em; color: var(--forest); }
+  .nav-logo-name span { color: var(--accent-deep); }
+  .nav-logo-tag { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta { background: var(--forest); color: var(--cream) !important; padding: 8px 20px; border-radius: 2px; }
+
+  .page-header {
+    background: var(--forest);
+    padding: 120px 80px 80px;
+    color: var(--cream);
+  }
+  .page-header-inner { max-width: 1200px; margin: 0 auto; }
+  .page-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; }
+  .page-title { font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 24px; }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-intro { font-size: 17px; color: var(--sage); font-weight: 300; max-width: 640px; line-height: 1.8; }
+
+  .service-nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 80px;
+    position: sticky; top: 64px; z-index: 90;
+    overflow-x: auto;
+  }
+  .service-nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; gap: 0;
+  }
+  .service-nav a {
+    padding: 16px 20px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-light);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .service-nav a:hover, .service-nav a.active { color: var(--forest); border-bottom-color: var(--forest-light); }
+
+  .services-page { padding: 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+
+  .service-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .service-section:nth-child(even) { background: var(--cream); }
+  .service-section-inner {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .service-meta { position: sticky; top: 120px; }
+  .service-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 48px; font-weight: 700;
+    color: var(--rule);
+    line-height: 1; margin-bottom: 16px;
+  }
+  .service-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--forest); line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .service-desc {
+    font-size: 14px; color: var(--ink-light);
+    line-height: 1.75; font-weight: 300;
+  }
+  .service-detail-title {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 20px;
+  }
+  .service-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .service-item {
+    background: var(--warm-white);
+    padding: 20px 24px;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    transition: background 0.15s;
+  }
+  .service-section:nth-child(even) .service-item { background: white; }
+  .service-item:hover { background: white; }
+  .service-item::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--forest-light);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .cta-strip {
+    background: var(--forest);
+    padding: 80px;
+    text-align: center;
+  }
+  .cta-strip h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 32px; font-weight: 400;
+    color: var(--cream); margin-bottom: 16px;
+  }
+  .cta-strip p { color: var(--sage); font-weight: 300; margin-bottom: 36px; }
+  .btn-primary {
+    background: var(--accent); color: var(--forest);
+    padding: 14px 32px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 2px; display: inline-block; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #dbbe82; }
+
+  footer {
+    background: var(--ink); color: var(--ink-light);
+    padding: 48px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--cream); }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy { font-size: 12px; }
+
+  @media (max-width: 900px) {
+    .page-header { padding: 100px 32px 60px; }
+    .service-nav { padding: 0 32px; }
+    .container { padding: 0 32px; }
+    .service-section-inner { grid-template-columns: 1fr; gap: 32px; }
+    .service-meta { position: static; }
+    .service-items { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-name">Grant <span>Assurance</span></span>
+    <span class="nav-logo-tag">Assurance for responsible sourcing</span>
+  </a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">What we offer</p>
+    <h1 class="page-title">Services &amp; <em>Expertise</em></h1>
+    <p class="page-intro">A full range of independent assurance services across regulatory due diligence, certification auditing, risk assessment and geospatial analysis — tailored to your supply chain and compliance obligations.</p>
+  </div>
+</div>
+
+<nav class="service-nav">
+  <div class="service-nav-inner">
+    <a href="#due-diligence">Due Diligence</a>
+    <a href="#risk-assessment">Risk Assessment</a>
+    <a href="#certification">Certification</a>
+    <a href="#renewable">Renewable Energy</a>
+    <a href="#carbon">Carbon &amp; GHG</a>
+    <a href="#advisory">Advisory</a>
+    <a href="#finance">Sustainable Finance</a>
+    <a href="#gis">GIS</a>
+  </div>
+</nav>
+
+<div class="services-page">
+
+  <section class="service-section" id="due-diligence">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">01</div>
+          <h2 class="service-title">Regulatory Due Diligence for Land-Use &amp; Forest-Risk Commodities</h2>
+          <p class="service-desc">End-to-end due diligence system design and implementation support across all major land-use regulations — from EUDR to the Lacey Act — covering timber, coffee, palm, soy, biomass and other high-risk commodities.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">EUDR due diligence systems and implementation support</div>
+            <div class="service-item">UKTR due diligence systems</div>
+            <div class="service-item">US Lacey Act due diligence support</div>
+            <div class="service-item">Australian Illegal Logging Prohibition Regulation support</div>
+            <div class="service-item">Commodity and supply chain due diligence for timber, coffee, palm, soy and biomass</div>
+            <div class="service-item">Supply chain mapping and traceability design</div>
+            <div class="service-item">Supplier onboarding and evidence collection</div>
+            <div class="service-item">Shipment-level due diligence and verification checks</div>
+            <div class="service-item">Risk assessment methodologies for operators and traders</div>
+            <div class="service-item">DDS procedure writing and implementation</div>
+            <div class="service-item">TRACES and DDS workflow support for EUDR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="risk-assessment">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">02</div>
+          <h2 class="service-title">Risk Assessment &amp; Sourcing Assurance</h2>
+          <p class="service-desc">Structured risk reviews at country, jurisdiction, species and supply chain level — supporting operators and importers in demonstrating credible, defensible sourcing assurance.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">Country risk assessments</div>
+            <div class="service-item">Jurisdiction risk assessments</div>
+            <div class="service-item">Species risk assessments</div>
+            <div class="service-item">Product risk assessments</div>
+            <div class="service-item">Supply chain risk assessments</div>
+            <div class="service-item">Forest source and concession risk reviews</div>
+            <div class="service-item">Enhanced desk-based due diligence assessments</div>
+            <div class="service-item">Legality and sustainability assessments of suppliers and sourcing regions</div>
+            <div class="service-item">Independent review of certification reliance versus wider supply chain risk</div>
+            <div class="service-item">Responsible sourcing frameworks for buyers and importers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="certification">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">03</div>
+          <h2 class="service-title">Certification, Auditing &amp; Assurance</h2>
+          <p class="service-desc">Independent FSC and PEFC Chain of Custody auditing, certification readiness support, and internal audit services — helping clients meet and maintain certification requirements efficiently.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">FSC Chain of Custody auditing</div>
+            <div class="service-item">PEFC Chain of Custody auditing</div>
+            <div class="service-item">Certification support and audit readiness for FSC and PEFC</div>
+            <div class="service-item">Development of procedures and controls to meet FSC and PEFC requirements</div>
+            <div class="service-item">Material accounting and claim control review</div>
+            <div class="service-item">Trademark and claims compliance support</div>
+            <div class="service-item">Group scheme and member support</div>
+            <div class="service-item">Internal audit services including ISO-based management systems</div>
+            <div class="service-item">Independent assurance and verification reviews for client systems and claims</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="renewable">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">04</div>
+          <h2 class="service-title">Renewable Energy, Biofuels &amp; Feedstock Certification</h2>
+          <p class="service-desc">ISCC auditing and RED II compliance support for biomass, biofuel and biomethane supply chains — including sustainability and legality assessments for renewable feedstocks.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">ISCC certification auditing and support</div>
+            <div class="service-item">RED II and renewable energy compliance support</div>
+            <div class="service-item">Renewable feedstock and biomass supply chain due diligence</div>
+            <div class="service-item">Biomethane, biofuel and biomass feedstock sourcing reviews</div>
+            <div class="service-item">Sustainability and legality assessments of renewable energy supply chains</div>
+            <div class="service-item">Verification of agricultural and forestry feedstocks for energy use</div>
+            <div class="service-item">Support on other renewable energy assurance schemes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="carbon">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">05</div>
+          <h2 class="service-title">Carbon, GHG &amp; Environmental Data Services</h2>
+          <p class="service-desc">Practical support for organisations needing credible GHG data, carbon footprinting and land-use analytics — including preparation for ISO 14064 verification and emissions reporting.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">ISO 14064-related verification and validation preparation</div>
+            <div class="service-item">GHG accounting and biogenic carbon strategy support</div>
+            <div class="service-item">Carbon footprinting across supply chains</div>
+            <div class="service-item">Emissions factor review and methodological support</div>
+            <div class="service-item">Land-use and deforestation related data analysis</div>
+            <div class="service-item">Support for credible evidence around environmental claims and reporting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="advisory">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">06</div>
+          <h2 class="service-title">Advisory, Training &amp; Systems Design</h2>
+          <p class="service-desc">Strategic advice, practical tools and targeted training to build internal capability — from gap analysis and procedure writing to supplier webinars and platform design for due diligence management.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">Due diligence procedure drafting</div>
+            <div class="service-item">Policy and SOP development</div>
+            <div class="service-item">Client training on EUDR, UKTR, FSC, PEFC and related obligations</div>
+            <div class="service-item">Supplier webinars and training materials</div>
+            <div class="service-item">Scoping exercises to determine regulatory applicability</div>
+            <div class="service-item">Gap analysis against regulatory and certification requirements</div>
+            <div class="service-item">Supply chain data collection tools and templates</div>
+            <div class="service-item">Audit checklists and practical field tools</div>
+            <div class="service-item">Platform and workflow design for due diligence management</div>
+            <div class="service-item">Strategic advice on assurance models, verification pathways and market access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="finance">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">07</div>
+          <h2 class="service-title">Sustainable Finance &amp; ESG Advisory</h2>
+          <p class="service-desc">Independent ESG due diligence, fund deployment support and environmental and social compliance advisory for private equity, institutional investors and pension funds with exposure to forest and land-use assets.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">ESG due diligence for forestry and land-use asset acquisitions</div>
+            <div class="service-item">Environmental and social compliance for fund deployment</div>
+            <div class="service-item">IFC Performance Standards compliance and gap assessment</div>
+            <div class="service-item">FSC, PEFC and certification compliance for forest investment portfolios</div>
+            <div class="service-item">Responsible investment policy and SOP development</div>
+            <div class="service-item">Pre-acquisition environmental and social risk reviews</div>
+            <div class="service-item">Ongoing operational compliance support for managed forest assets</div>
+            <div class="service-item">Advisory to private equity, institutional and pension fund investors</div>
+            <div class="service-item">ESG reporting and evidence support for investor and stakeholder disclosure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" id="gis">
+    <div class="container">
+      <div class="service-section-inner">
+        <div class="service-meta">
+          <div class="service-number">08</div>
+          <p class="service-desc">ArcGIS and QGIS mapping services for EUDR compliance and supply chain traceability — from farm polygon creation and geolocation validation to spatial deforestation risk analysis.</p>
+        </div>
+        <div>
+          <p class="service-detail-title">Service components</p>
+          <div class="service-items">
+            <div class="service-item">GIS map development and digitisation using ArcGIS and QGIS</div>
+            <div class="service-item">Farm, forest and concession mapping for compliance and traceability</div>
+            <div class="service-item">Polygon and point data creation for EUDR and due diligence systems</div>
+            <div class="service-item">Geolocation data cleaning, validation and formatting</div>
+            <div class="service-item">Spatial risk analysis for deforestation, land-use change and sourcing exposure</div>
+            <div class="service-item">GIS database and attribute table development</div>
+            <div class="service-item">Supplier geolocation data review and correction</div>
+            <div class="service-item">Map production and geospatial evidence preparation for regulatory requirements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="cta-strip">
+  <h2>Ready to discuss your requirements?</h2>
+  <p>We work with operators, traders, importers, certification bodies and NGOs across the globe.</p>
+  <a href="index.html#contact" class="btn-primary">Get in touch</a>
+</div>
+
+<footer>
+  <div style="display:flex; flex-direction:column; line-height:1.2;">
+    <span class="footer-logo">Grant <span>Assurance</span></span>
+    <span style="font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8fad94; margin-top:3px;">Assurance for responsible sourcing</span>
+  </div>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Grant Assurance. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
