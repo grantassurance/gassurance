@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="4" fill="#1a3a2a"/>
+  <text x="8" y="34" font-family="Georgia, serif" font-size="26" font-weight="400" fill="#f5f0e8" letter-spacing="0.02em">G</text>
+  <text x="32" y="34" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#c8a96e" letter-spacing="0.02em">A</text>
+  <line x1="8" y1="44" x2="56" y2="44" stroke="#8fad94" stroke-width="1.5" opacity="0.5"/>
+  <text x="8" y="56" font-family="Arial, sans-serif" font-size="7" font-weight="500" fill="#8fad94" letter-spacing="0.15em">ASSURANCE</text>
+</svg>
