@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Grant Assurance — Supply Chain Compliance & Sustainability</title>
+<meta name="description" content="Expert commentary and regulatory updates on EUDR compliance, FSC and PEFC certification, carbon footprinting, supply chain due diligence and ESG advisory for UK companies.">
+<meta name="keywords" content="EUDR insights, supply chain compliance UK, FSC certification news, carbon footprinting, sustainability assurance, deforestation regulation updates">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --forest-mid: #2d5c40;
+    --forest-light: #4a8a60;
+    --sage: #8fad94;
+    --cream: #f5f0e8;
+    --warm-white: #faf9f6;
+    --ink: #1c1c1a;
+    --ink-mid: #3d3d38;
+    --ink-light: #6b6b63;
+    --rule: #d4cfc4;
+    --accent: #c8a96e;
+    --accent-deep: #9c7d47;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 16px; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,249,246,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 18px; letter-spacing: 0.02em; color: var(--forest); }
+  .nav-logo-name span { color: var(--accent-deep); }
+  .nav-logo-tag { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--forest); }
+  .nav-cta { background: var(--forest); color: var(--cream) !important; padding: 8px 20px; border-radius: 2px; }
+  .nav-cta:hover { background: var(--forest-mid) !important; }
+
+  /* PAGE HEADER */
+  .page-header {
+    background: var(--forest);
+    padding: 120px 80px 80px;
+    color: var(--cream);
+  }
+  .page-header-inner { max-width: 1200px; margin: 0 auto; }
+  .page-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; }
+  .page-title { font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 24px; }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-intro { font-size: 17px; color: var(--sage); font-weight: 300; max-width: 640px; line-height: 1.8; }
+
+  /* INSIGHTS GRID */
+  .insights-section { padding: 80px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 60px;
+  }
+
+  /* FEATURED — first article spans full width */
+  .article-card { background: var(--warm-white); transition: background 0.2s; }
+  .article-card:hover { background: white; }
+  .article-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .article-card-body { padding: 36px 32px; display: flex; flex-direction: column; }
+  .article-card.featured .article-card-body { padding: 48px; justify-content: center; }
+  .article-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+  .article-date { font-size: 11px; color: var(--ink-light); letter-spacing: 0.1em; text-transform: uppercase; }
+  .article-category {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--forest);
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .article-card h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--forest); line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .article-card.featured h2 { font-size: 28px; }
+  .article-card p {
+    font-size: 14px; color: var(--ink-light);
+    line-height: 1.75; font-weight: 300;
+    flex-grow: 1; margin-bottom: 24px;
+  }
+  .article-byline { font-size: 12px; color: var(--ink-light); margin-bottom: 20px; }
+  .article-byline strong { color: var(--ink-mid); font-weight: 500; }
+  .article-rule {
+    display: block; width: 32px; height: 2px;
+    background: var(--accent); margin-bottom: 20px;
+  }
+  .read-more {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--forest-light);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+    align-self: flex-start;
+  }
+  .article-card:hover .read-more { border-color: var(--forest-light); }
+
+  /* FEATURED IMAGE PLACEHOLDER */
+  .article-card.featured .article-image {
+    background: var(--forest-mid);
+    min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .article-image-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 80px; font-weight: 700;
+    color: rgba(255,255,255,0.08);
+    line-height: 1; user-select: none;
+    text-align: center; padding: 24px;
+  }
+  .article-image-tag {
+    position: absolute; bottom: 24px; left: 24px;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid rgba(143,173,148,0.3);
+    padding: 6px 14px; border-radius: 2px;
+  }
+
+  /* COMING SOON CARD */
+  .coming-soon {
+    background: var(--cream);
+    border: 2px dashed var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    min-height: 280px; flex-direction: column; gap: 12px;
+    padding: 32px;
+  }
+  .coming-soon-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .coming-soon-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px; color: var(--ink-light);
+    text-align: center; line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* NEWSLETTER STRIP */
+  .newsletter-strip {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 48px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px;
+    margin-bottom: 80px;
+  }
+  .newsletter-left h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--forest); margin-bottom: 8px;
+  }
+  .newsletter-left p { font-size: 14px; color: var(--ink-light); font-weight: 300; }
+  .newsletter-form { display: flex; gap: 12px; flex-shrink: 0; }
+  .newsletter-form input {
+    padding: 12px 16px;
+    border: 1px solid var(--rule);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--ink);
+    border-radius: 2px; outline: none;
+    width: 260px; transition: border-color 0.2s;
+  }
+  .newsletter-form input:focus { border-color: var(--forest-light); }
+  .btn-primary {
+    background: var(--forest); color: var(--cream);
+    padding: 12px 24px; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 2px; border: none; cursor: pointer;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--forest-mid); }
+
+  /* TOPICS */
+  .topics-row {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px;
+  }
+  .topic-tag {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-mid);
+    border: 1px solid var(--rule);
+    padding: 6px 16px; border-radius: 2px;
+    background: white; transition: all 0.2s; cursor: default;
+  }
+  .topic-tag:hover { border-color: var(--forest-light); color: var(--forest); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: var(--ink-light);
+    padding: 48px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--cream); }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy { font-size: 12px; }
+
+  @media (max-width: 900px) {
+    .page-header { padding: 100px 32px 60px; }
+    .container { padding: 0 32px; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .article-card.featured { grid-template-columns: 1fr; }
+    .article-card.featured .article-image { min-height: 200px; }
+    .newsletter-strip { flex-direction: column; }
+    .newsletter-form { flex-direction: column; width: 100%; }
+    .newsletter-form input { width: 100%; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-name">Grant <span>Assurance</span></span>
+    <span class="nav-logo-tag">Assurance for responsible sourcing</span>
+  </a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="insights.html" class="active">Insights</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">Commentary &amp; Analysis</p>
+    <h1 class="page-title">Insights &amp; <em>Perspectives</em></h1>
+    <p class="page-intro">Regulatory updates, practical guidance and sector commentary on supply chain compliance, sustainability assurance and ESG — for UK companies navigating a complex and fast-moving landscape.</p>
+  </div>
+</div>
+
+<section class="insights-section">
+  <div class="container">
+
+    <!-- TOPICS -->
+    <div class="topics-row">
+      <span class="topic-tag">All</span>
+      <span class="topic-tag">Regulatory</span>
+      <span class="topic-tag">Certification</span>
+      <span class="topic-tag">Carbon &amp; GHG</span>
+      <span class="topic-tag">Sustainable Finance</span>
+      <span class="topic-tag">Due Diligence</span>
+      <span class="topic-tag">GIS</span>
+    </div>
+
+    <!-- ARTICLES GRID -->
+    <div class="insights-grid">
+
+      <!-- FEATURED — placeholder for first EUDR article -->
+      <div class="article-card featured">
+        <div class="article-image">
+          <div class="article-image-text">EUDR</div>
+          <span class="article-image-tag">Coming shortly</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-rule"></span>
+          <div class="article-meta">
+            <span class="article-category">Regulatory</span>
+            <span class="article-date">April 2026</span>
+          </div>
+          <h2>EUDR Direction of Travel — What the EU's Latest Guidance Means for UK Operators</h2>
+          <p>The EU is expected to publish its direction of travel on EUDR simplification imminently. This article will provide a clear summary of what has been announced and what it means practically for UK importers, operators and traders sourcing forest-risk commodities.</p>
+          <span class="article-byline">By <strong>Adam Grant</strong> · Grant Assurance</span>
+          <a href="#" class="read-more">Publishing shortly →</a>
+        </div>
+      </div>
+
+      <!-- COMING SOON CARDS -->
+      <div class="article-card">
+        <div class="coming-soon">
+          <span class="coming-soon-label">Coming soon</span>
+          <p class="coming-soon-text">FSC Chain of Custody Audits — The Five Most Common Failures</p>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="coming-soon">
+          <span class="coming-soon-label">Coming soon</span>
+          <p class="coming-soon-text">UKTR vs EUDR — What's Different for UK Importers</p>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="coming-soon">
+          <span class="coming-soon-label">Coming soon</span>
+          <p class="coming-soon-text">Carbon Footprinting Your Supply Chain — Where to Start</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter-strip">
+      <div class="newsletter-left">
+        <h3>Stay informed</h3>
+        <p>Regulatory updates and practical guidance delivered directly to your inbox. No spam — relevant content only.</p>
+      </div>
+      <form class="newsletter-form" action="https://formspree.io/f/xlgawqop" method="POST">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <input type="hidden" name="type" value="newsletter">
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex; flex-direction:column; line-height:1.2;">
+    <span class="footer-logo">Grant <span>Assurance</span></span>
+    <span style="font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8fad94; margin-top:3px;">Assurance for responsible sourcing</span>
+  </div>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="insights.html">Insights</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Grant Assurance. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
