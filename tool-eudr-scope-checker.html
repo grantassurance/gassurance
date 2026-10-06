@@ -1019,7 +1019,7 @@ function citesCheck(input){
 
 function riskLabel(r){ return {low:"Low Risk",standard:"Standard Risk",high:"High Risk"}[r]; }
 function riskDesc(r,country){
-  if(r==="low") return `<strong>${country}</strong> is classified as <strong>Low Risk</strong> under Regulation (EU) 2025/1093. Simplified due diligence applies — geolocation data not required, but a Due Diligence Statement must still be submitted.`;
+  if(r==="low") return `<strong>${country}</strong> is classified as <strong>Low Risk</strong> under Regulation (EU) 2025/1093. Simplified due diligence under Article 13 applies: the Article 10 risk assessment and Article 11 risk mitigation steps fall away, but the Article 9 information, including geolocation data for every production plot, must still be collected and a Due Diligence Statement must still be submitted.`;
   if(r==="high") return `<strong>${country}</strong> is classified as <strong>High Risk</strong> under Regulation (EU) 2025/1093. Enhanced due diligence required. Expect heightened scrutiny and a higher probability of competent authority audit.`;
   return `<strong>${country}</strong> is classified as <strong>Standard Risk</strong> under Regulation (EU) 2025/1093. Full due diligence required, including geolocation data for all relevant production plots and a complete risk assessment.`;
 }
