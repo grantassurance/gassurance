@@ -51,7 +51,7 @@ footerClass: "site-footer"
         <select id="country">
           <option value="">— Select country —</option>
           <option value="AU">Australia</option>
-          <option value="BI">Brazil</option>
+          <option value="BR">Brazil</option>
           <option value="CM">Cameroon</option>
           <option value="CN">China</option>
           <option value="CD">Congo, Democratic Republic</option>
@@ -201,7 +201,7 @@ footerClass: "site-footer"
 // ═══════════════════════════════════════════════════════════
 
 const COUNTRY_NAMES = {
-  AU:"Australia",BI:"Brazil",CM:"Cameroon",CN:"China",CD:"Congo (DRC)",
+  AU:"Australia",BR:"Brazil",CM:"Cameroon",CN:"China",CD:"Congo (DRC)",
   CG:"Congo (Republic)",CI:"Côte d'Ivoire",GA:"Gabon",GH:"Ghana",
   ID:"Indonesia",MY:"Malaysia",MX:"Mexico",MM:"Myanmar",NZ:"New Zealand",
   NG:"Nigeria",PG:"Papua New Guinea",PE:"Peru",PH:"Philippines",
@@ -318,11 +318,12 @@ const EUDR_NOTES = {
 };
 
 const EUDR_RISK = {
-  AU:"low",NZ:"low",US:"low",
-  MY:"standard",ID:"standard",CN:"standard",VN:"standard",TH:"standard",
-  PH:"standard",MM:"standard",PG:"standard",SB:"standard",LK:"standard",ZA:"standard",
-  BI:"high",CD:"high",CG:"high",CM:"high",CI:"high",GA:"high",GH:"high",
-  NG:"high",PE:"high",UG:"high",ZM:"high",ZW:"high",TZ:"high",MX:"high",RU:"high",
+  // Commission Implementing Regulation (EU) 2025/1093, Annex. Countries not listed there are standard risk.
+  AU:"low",CN:"low",CG:"low",GA:"low",GH:"low",NZ:"low",PG:"low",PH:"low",SB:"low",
+  ZA:"low",LK:"low",TH:"low",US:"low",VN:"low",
+  BR:"standard",CM:"standard",CD:"standard",CI:"standard",ID:"standard",MY:"standard",MX:"standard",
+  NG:"standard",PE:"standard",TZ:"standard",UG:"standard",ZM:"standard",ZW:"standard",
+  MM:"high",RU:"high",
   OTHER:"standard"
 };
 
