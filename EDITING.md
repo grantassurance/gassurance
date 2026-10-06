@@ -11,3 +11,4 @@ Where things live:
 
 To change a page: open its file in src/, edit the text, commit. Cloudflare rebuilds within a minute or two.
 If a build fails, the previous version stays live and Cloudflare shows the error under Deployments.
+Preview builds run from the Rebuild branch on the gassurance-rebuild Worker.
