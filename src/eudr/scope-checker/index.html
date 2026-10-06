@@ -1,0 +1,610 @@
+---
+layout: base.njk
+title: "Timber Import Scope Checker | Grant Assurance"
+description: "Free tool for UK and EU operators: check whether your timber imports fall within EUDR, UKTR, EUTR transitional, US Lacey Act and Australian ILP Act scope. Indicative guidance based on HS code, country of harvest and species."
+ogTitle: "Timber Import Scope Checker | Grant Assurance"
+ogDescription: "Check whether your timber imports fall within EUDR, UKTR, Lacey Act and Australian ILP Act scope. Free indicative guidance for operators and traders."
+css: "scope-checker"
+permalink: "/eudr/scope-checker/"
+navActive: "eudr"
+navClass: "site-nav"
+footerClass: "site-footer"
+---
+<!-- TOOL HEADER -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <p class="tool-eyebrow">Regulatory Tool · Free Utility</p>
+    <h1 class="tool-title">Timber Import <em>Scope Checker</em></h1>
+    <p class="tool-intro">Indicative scoping guidance for timber and timber-product imports. Enter the country of harvest, HS code and (optionally) species — the tool returns scope assessments against EUDR, UKTR, EUTR transitional, US Lacey Act and the Australian ILP Act, and flags any CITES-listed species.</p>
+    <div class="reg-pills">
+      <span class="reg-pill">EUDR 2023/1115 — EU</span>
+      <span class="reg-pill">UKTR 2013 — GB</span>
+      <span class="reg-pill">EUTR 995/2010 — EU (transitional)</span>
+      <span class="reg-pill">Lacey Act 2008 — US</span>
+      <span class="reg-pill">ILP Act 2012 — AU</span>
+      <span class="reg-pill">CITES — Global</span>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+<main class="main">
+
+  <div class="disclaimer">
+    ⚠ ADVISORY USE ONLY — This tool provides indicative scoping guidance based on published regulatory frameworks. It does not constitute legal advice. HS code classification, species identification, and country of harvest determination must be confirmed by a qualified customs agent or legal adviser. Regulatory scope determinations may change with updates to legislation.
+  </div>
+
+  <div class="privacy-strip">
+    <svg class="privacy-strip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </svg>
+    <span><strong>Private by design.</strong> This tool runs in your browser. No data is sent to a server, stored, or shared. Use it as often as you need.</span>
+  </div>
+
+  <div class="section-label">Product &amp; Origin</div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Country of Harvest <span class="req">*</span></label>
+      <div class="select-wrap">
+        <select id="country">
+          <option value="">— Select country —</option>
+          <option value="AU">Australia</option>
+          <option value="BI">Brazil</option>
+          <option value="CM">Cameroon</option>
+          <option value="CN">China</option>
+          <option value="CD">Congo, Democratic Republic</option>
+          <option value="CG">Congo, Republic</option>
+          <option value="CI">Côte d'Ivoire</option>
+          <option value="GA">Gabon</option>
+          <option value="GH">Ghana</option>
+          <option value="ID">Indonesia</option>
+          <option value="MY">Malaysia</option>
+          <option value="MX">Mexico</option>
+          <option value="MM">Myanmar</option>
+          <option value="NZ">New Zealand</option>
+          <option value="NG">Nigeria</option>
+          <option value="PG">Papua New Guinea</option>
+          <option value="PE">Peru</option>
+          <option value="PH">Philippines</option>
+          <option value="RU">Russia</option>
+          <option value="SB">Solomon Islands</option>
+          <option value="ZA">South Africa</option>
+          <option value="LK">Sri Lanka</option>
+          <option value="TZ">Tanzania</option>
+          <option value="TH">Thailand</option>
+          <option value="UG">Uganda</option>
+          <option value="US">United States</option>
+          <option value="VN">Vietnam</option>
+          <option value="ZM">Zambia</option>
+          <option value="ZW">Zimbabwe</option>
+          <option value="OTHER">Other / Unspecified</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>HS / HTS Code <span class="req">*</span> <span class="hint">4–10 digits, no spaces or dots</span></label>
+      <input type="text" id="hscode" placeholder="e.g. 440710 or 9403">
+    </div>
+
+    <div class="form-group full">
+      <label>Timber Species <span class="hint">Scientific name preferred — triggers CITES check</span></label>
+      <input type="text" id="species" placeholder="e.g. Dalbergia latifolia, ramin, ipê, African mahogany, teak">
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:22px;">
+    Destination Market
+    <span style="font-family:var(--serif);font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-dim);margin-left:8px;font-style:italic;">Select one or more</span>
+  </div>
+
+  <div class="dest-grid">
+    <div class="dest-item">
+      <input type="checkbox" id="dest-au" value="AU">
+      <label for="dest-au">
+        <span class="dest-code">AU</span>
+        <span class="dest-name">ILP Act</span>
+      </label>
+    </div>
+    <div class="dest-item">
+      <input type="checkbox" id="dest-eutr" value="EU-EUTR">
+      <label for="dest-eutr">
+        <span class="dest-code">EU</span>
+        <span class="dest-name">EUTR</span>
+      </label>
+    </div>
+    <div class="dest-item">
+      <input type="checkbox" id="dest-eudr" value="EU-EUDR">
+      <label for="dest-eudr">
+        <span class="dest-code">EU</span>
+        <span class="dest-name">EUDR</span>
+      </label>
+    </div>
+    <div class="dest-item">
+      <input type="checkbox" id="dest-uk" value="UK">
+      <label for="dest-uk">
+        <span class="dest-code">GB</span>
+        <span class="dest-name">UKTR</span>
+      </label>
+    </div>
+    <div class="dest-item">
+      <input type="checkbox" id="dest-us" value="US">
+      <label for="dest-us">
+        <span class="dest-code">US</span>
+        <span class="dest-name">Lacey Act</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-check" onclick="runCheck()">▶ &nbsp;Check Regulatory Scope</button>
+    <button class="btn-reset" onclick="resetForm()">↺ &nbsp;Reset</button>
+  </div>
+
+  <hr class="divider">
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div class="results-label">Scope Assessment Results</div>
+    <div id="input-summary" class="input-summary"></div>
+    <div id="cites-alert"></div>
+    <div id="result-cards"></div>
+  </div>
+
+</main>
+</div>
+
+<!-- REGULATORY REFERENCES -->
+<div class="ref-strip">
+  <div class="ref-strip-inner">
+    <p class="ref-label">Regulatory References</p>
+    <p class="ref-text">
+      ILP Act 2012 &amp; Illegal Logging Prohibition Rules 2024 (AU) &nbsp;·&nbsp;
+      EUTR Regulation (EU) 995/2010 (transitional) &nbsp;·&nbsp;
+      EUDR Regulation (EU) 2023/1115 as amended by 2025/2650 &nbsp;·&nbsp;
+      UKTR Timber &amp; Timber Products (Placing on the Market) Regulations 2013 (GB) &nbsp;·&nbsp;
+      Lacey Act 16 U.S.C. §§3371–3378, APHIS Phase VII Dec 2024 &nbsp;·&nbsp;
+      CITES Appendices as of CoP19 incl. listings effective Nov 2024 &nbsp;·&nbsp;
+      Country benchmarking: Regulation (EU) 2025/1093
+    </p>
+  </div>
+</div>
+
+<!-- WHAT NEXT -->
+<section class="what-next">
+  <div class="what-next-inner">
+    <p class="wn-eyebrow">What Next</p>
+    <h2 class="wn-title">Need help interpreting your results?</h2>
+    <p class="wn-intro">A scope determination is the first step. Translating that into a working due diligence system, gathering the evidence, and meeting the reporting obligations is where most of the effort lies — and where Grant Assurance can help.</p>
+    <div class="wn-grid">
+      <div class="wn-card">
+        <span class="wn-rule"></span>
+        <h3>If your product is in scope</h3>
+        <p>We support operators and traders with end-to-end due diligence system design, supplier onboarding, risk assessment, DDS submission and ongoing compliance under EUDR, UKTR, Lacey Act and the Australian ILP Act.</p>
+        <a href="/eudr/" class="wn-link">Regulatory due diligence services →</a>
+      </div>
+      <div class="wn-card">
+        <span class="wn-rule"></span>
+        <h3>If you'd like to discuss a specific case</h3>
+        <p>If your scope assessment is unclear, your supply chain crosses multiple jurisdictions, or you need a documented opinion to support a customs declaration or audit, we offer short advisory engagements.</p>
+        <a href="/#contact" class="wn-link">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════
+
+const COUNTRY_NAMES = {
+  AU:"Australia",BI:"Brazil",CM:"Cameroon",CN:"China",CD:"Congo (DRC)",
+  CG:"Congo (Republic)",CI:"Côte d'Ivoire",GA:"Gabon",GH:"Ghana",
+  ID:"Indonesia",MY:"Malaysia",MX:"Mexico",MM:"Myanmar",NZ:"New Zealand",
+  NG:"Nigeria",PG:"Papua New Guinea",PE:"Peru",PH:"Philippines",
+  RU:"Russia",SB:"Solomon Islands",ZA:"South Africa",LK:"Sri Lanka",
+  TZ:"Tanzania",TH:"Thailand",UG:"Uganda",US:"United States",
+  VN:"Vietnam",ZM:"Zambia",ZW:"Zimbabwe",OTHER:"Other / Unspecified"
+};
+
+const AU_HS = {
+  "4401":"Fuel wood; wood chips/particles; sawdust and wood waste",
+  "4402":"Wood charcoal","4403":"Wood in the rough (logs)",
+  "4404":"Hoopwood; split poles; piles; stakes","4405":"Wood wool; wood flour",
+  "4406":"Railway or tramway sleepers of wood",
+  "4407":"Wood sawn or chipped lengthwise, sliced or peeled (≥6mm)",
+  "4408":"Sheets for veneering, for plywood","4409":"Wood continuously shaped along edges or faces",
+  "4410":"Particle board, OSB and similar board","4411":"Fibreboard of wood or other ligneous material",
+  "4412":"Plywood, veneered panels and similar laminated wood","4413":"Densified wood",
+  "4414":"Wooden frames for paintings, photographs, mirrors",
+  "4415":"Packing cases, boxes, crates, drums of wood",
+  "4416":"Casks, barrels, vats of wood","4417":"Tools, tool bodies, handles of wood",
+  "4418":"Builders' joinery and carpentry of wood","4419":"Tableware and kitchenware of wood",
+  "4420":"Wood marquetry and inlaid wood; caskets; statuettes","4421":"Other articles of wood",
+  "4701":"Mechanical wood pulp","4702":"Chemical wood pulp, dissolving grades",
+  "4703":"Chemical wood pulp, soda or sulphate","4704":"Chemical wood pulp, sulphite",
+  "4705":"Wood pulp, combined mechanical/chemical","4706":"Pulps from recovered paper",
+  "4707":"Recovered paper or paperboard (waste and scrap)",
+  "4801":"Newsprint","4802":"Uncoated paper for writing/printing",
+  "4803":"Tissue and toilet paper","4804":"Uncoated kraft paper/paperboard",
+  "4805":"Other uncoated paper/paperboard","4806":"Vegetable parchment/greaseproof papers",
+  "4807":"Composite paper/paperboard","4808":"Corrugated paper/paperboard",
+  "4809":"Carbon paper","4810":"Coated paper/paperboard",
+  "4811":"Paper/paperboard coated or impregnated","4813":"Cigarette paper",
+  "4814":"Wallpaper and similar wall coverings","4818":"Toilet paper, tissues",
+  "4819":"Cartons, boxes, bags of paper","4820":"Registers, notebooks",
+  "4821":"Paper or paperboard labels","4823":"Other paper/paperboard cut to shape",
+  "9401":"Seats (wooden-frame seats only — ex 9401)",
+  "9403":"Other furniture and parts thereof (wooden — ex 9403)",
+  "9406":"Prefabricated buildings containing wood (9406.10)"
+};
+const AU_NOTES = {
+  "4415":"Packaging used solely to carry/protect another product is EXEMPT. Regulated when imported as merchandise in its own right.",
+  "4707":"Fully recycled paper/paperboard may be exempt — verify recycled content.",
+  "9401":"Only wooden-frame seats are regulated under HS 9401.",
+  "9403":"Only wooden furniture and wooden parts are regulated under HS 9403.",
+  "9406":"Only prefabricated buildings containing wood (sub-heading 9406.10) are regulated."
+};
+
+const EUTR_UKTR_HS = {
+  "4401":"Fuel wood; wood in chips or particles; sawdust, wood waste and scrap",
+  "4403":"Wood in the rough — logs","4406":"Railway or tramway sleepers of wood",
+  "4407":"Wood sawn or chipped lengthwise, sliced or peeled",
+  "4408":"Veneer sheets; sheets for plywood","4409":"Wood continuously shaped along edges or faces",
+  "4410":"Particle board, OSB and similar board","4411":"Fibreboard of wood or other ligneous material",
+  "4412":"Plywood, veneered panels and similar laminated wood","4413":"Densified wood",
+  "4414":"Wooden frames for paintings, photographs, mirrors",
+  "4415":"Packing cases, boxes, crates, drums of wood",
+  "4416":"Casks, barrels, vats of wood","4417":"Tools, tool bodies, handles of wood",
+  "4418":"Builders' joinery and carpentry of wood","4419":"Tableware and kitchenware of wood",
+  "4420":"Wood marquetry; caskets; statuettes of wood","4421":"Other articles of wood",
+  "4701":"Mechanical wood pulp","4702":"Chemical wood pulp, dissolving grades",
+  "4703":"Chemical wood pulp, soda/sulphate","4704":"Chemical wood pulp, sulphite",
+  "4705":"Wood pulp, combined mechanical/chemical",
+  "4801":"Newsprint","4802":"Uncoated paper for writing/printing",
+  "4803":"Tissue and toilet paper","4804":"Uncoated kraft paper/paperboard",
+  "4805":"Other uncoated paper/paperboard","4808":"Corrugated paper/paperboard",
+  "4809":"Carbon paper","4810":"Coated paper/paperboard",
+  "4811":"Paper/paperboard coated/impregnated","4813":"Cigarette paper",
+  "4814":"Wallpaper","4818":"Toilet paper, tissues","4819":"Cartons, boxes of paper",
+  "4820":"Registers, notebooks","4823":"Other paper/paperboard cut to shape",
+  "9401":"Seats with wooden frames (ex 9401)",
+  "9403":"Wooden furniture and parts (ex 9403)","9406":"Prefabricated buildings of wood (ex 9406)"
+};
+const EUTR_UKTR_NOTES = {
+  "9401":"Only seats with wooden frames are in scope (ex 9401).",
+  "9403":"Only wooden furniture and wooden parts are in scope (ex 9403).",
+  "9406":"Only prefabricated wooden buildings are in scope (ex 9406).",
+  "4415":"Wood packaging used solely to carry another product is generally out of scope. In scope when sold as a standalone product."
+};
+
+const EUDR_HS = {
+  "4401":"Fuel wood, wood in chips or particles, sawdust and wood waste",
+  "4403":"Wood in the rough (logs)","4406":"Railway or tramway sleepers of wood",
+  "4407":"Wood sawn or chipped lengthwise, sliced or peeled (>6mm)",
+  "4408":"Sheets for veneering, for plywood",
+  "4409":"Wood continuously shaped (including parquet flooring strips)",
+  "4410":"Particle board, OSB and similar board","4411":"Fibreboard of wood or other ligneous material",
+  "4412":"Plywood, veneered panels and similar laminated wood","4413":"Densified wood",
+  "4414":"Wooden frames for paintings, photographs, mirrors",
+  "4415":"Packing cases, boxes, crates, drums of wood",
+  "4416":"Casks, barrels, vats of wood","4417":"Tools, tool bodies, handles of wood",
+  "4418":"Builders' joinery and carpentry of wood","4419":"Tableware and kitchenware of wood",
+  "4420":"Wood marquetry; caskets; statuettes of wood","4421":"Other articles of wood",
+  "4706":"Pulps from recovered paper or paperboard",
+  "4707":"Recovered paper or paperboard (waste and scrap)",
+  "4701":"Mechanical wood pulp","4702":"Chemical wood pulp, dissolving grades",
+  "4703":"Chemical wood pulp, soda/sulphate","4704":"Chemical wood pulp, sulphite",
+  "4705":"Wood pulp, combined mechanical/chemical",
+  "4801":"Newsprint","4802":"Uncoated paper for writing/printing",
+  "4803":"Tissue and toilet paper","4804":"Uncoated kraft paper/paperboard",
+  "4805":"Other uncoated paper/paperboard","4808":"Corrugated paper/paperboard",
+  "4810":"Coated paper/paperboard","4811":"Paper/paperboard coated/impregnated",
+  "4813":"Cigarette paper","4814":"Wallpaper","4818":"Toilet paper, tissues",
+  "4819":"Cartons, boxes of paper","4820":"Registers, notebooks",
+  "4823":"Other paper/paperboard cut to shape",
+  "9401":"Seats with wooden frames (ex 9401)",
+  "9403":"Wooden furniture and parts (ex 9403)","9406":"Prefabricated wooden buildings (ex 9406)"
+};
+const EUDR_NOTES = {
+  "9401":"Only seats with wooden frames are in scope under EUDR (ex 9401).",
+  "9403":"Only wooden furniture and wooden parts are in scope (ex 9403).",
+  "9406":"Only prefabricated wooden buildings are in scope (ex 9406).",
+  "4415":"Wood packaging used solely to carry/protect another product is EXCLUDED. In scope only when marketed as a standalone product.",
+  "4707":"Fully recycled/waste material is OUT of scope. Mixed recycled/virgin content — the virgin wood component remains in scope."
+};
+
+const EUDR_RISK = {
+  AU:"low",NZ:"low",US:"low",
+  MY:"standard",ID:"standard",CN:"standard",VN:"standard",TH:"standard",
+  PH:"standard",MM:"standard",PG:"standard",SB:"standard",LK:"standard",ZA:"standard",
+  BI:"high",CD:"high",CG:"high",CM:"high",CI:"high",GA:"high",GH:"high",
+  NG:"high",PE:"high",UG:"high",ZM:"high",ZW:"high",TZ:"high",MX:"high",RU:"high",
+  OTHER:"standard"
+};
+
+const LACEY_HS = {
+  "06":"Live trees and plants","12":"Oil seeds and oleaginous fruits (plant material)",
+  "33":"Essential oils (wood-derived)","42":"Articles of leather, saddlery (wood components — Phase VII)",
+  "44":"Wood and articles of wood (Phase I onwards — fully covered)",
+  "47":"Pulp of wood","48":"Paper and paperboard",
+  "64":"Footwear (wooden components — Phase VII)",
+  "92":"Musical instruments (woodwind parts — Phase VI)",
+  "94":"Furniture with wooden components",
+  "95":"Toys and sporting goods (wood components — Phase VII)",
+  "96":"Miscellaneous articles with wood (Phase VII)"
+};
+
+const CITES = {
+  "Abies guatemalensis":   {a:"I",  c:"Guatemalan fir"},
+  "Araucaria araucana":    {a:"I",  c:"Monkey puzzle"},
+  "Dalbergia nigra":       {a:"I",  c:"Brazilian rosewood"},
+  "Fitzroya cupressoides": {a:"I",  c:"Alerce"},
+  "Gonystylus spp.":       {a:"I",  c:"Ramin"},
+  "Guaiacum spp.":         {a:"I",  c:"Lignum vitae"},
+  "Swietenia humilis":     {a:"I",  c:"Pacific coast mahogany"},
+  "Swietenia mahagoni":    {a:"I",  c:"West Indian mahogany"},
+  "Aquilaria spp.":        {a:"II", c:"Agarwood / Oud"},
+  "Afzelia spp.":          {a:"II", c:"African mahogany / Doussie", n:"African populations only. In force Feb 2023."},
+  "Dalbergia spp.":        {a:"II", c:"Rosewood / Palisander (all species)"},
+  "Diospyros spp.":        {a:"II", c:"Ebony (Madagascar populations)"},
+  "Dipteryx spp.":         {a:"II", c:"Cumaru / Brazilian teak", n:"In force Nov 2024."},
+  "Gyrinops spp.":         {a:"II", c:"Agarwood (alternative genus)"},
+  "Handroanthus spp.":     {a:"II", c:"Ipê / Trumpet tree", n:"In force Nov 2024."},
+  "Khaya spp.":            {a:"II", c:"African mahogany", n:"African populations only. In force Feb 2023."},
+  "Osyris lanceolata":     {a:"II", c:"African sandalwood"},
+  "Pericopsis elata":      {a:"II", c:"Afromosia"},
+  "Prunus africana":       {a:"II", c:"African cherry"},
+  "Pterocarpus spp.":      {a:"II", c:"Padauk / African rosewood", n:"African populations only. In force Feb 2023."},
+  "Roseodendron spp.":     {a:"II", c:"Trumpet tree (related genus)", n:"In force Nov 2024."},
+  "Swietenia macrophylla": {a:"II", c:"Bigleaf mahogany (Neotropical)"},
+  "Tabebuia spp.":         {a:"II", c:"Ipê / Roble", n:"In force Nov 2024."},
+  "Taxus wallichiana":     {a:"II", c:"Himalayan yew"},
+  "Taxus chinensis":       {a:"II", c:"Chinese yew"},
+  "Taxus cuspidata":       {a:"II", c:"Japanese yew"}
+};
+
+const CITES_COMMON = {
+  "ramin":["Gonystylus spp."],"rosewood":["Dalbergia nigra","Dalbergia spp."],
+  "brazilian rosewood":["Dalbergia nigra"],"palisander":["Dalbergia spp."],
+  "dalbergia":["Dalbergia spp.","Dalbergia nigra"],
+  "mahogany":["Swietenia humilis","Swietenia mahagoni","Swietenia macrophylla","Khaya spp.","Afzelia spp."],
+  "bigleaf mahogany":["Swietenia macrophylla"],"west indian mahogany":["Swietenia mahagoni"],
+  "african mahogany":["Khaya spp.","Afzelia spp."],
+  "agarwood":["Aquilaria spp.","Gyrinops spp."],"oud":["Aquilaria spp."],
+  "ebony":["Diospyros spp."],"lignum vitae":["Guaiacum spp."],"afromosia":["Pericopsis elata"],
+  "ipe":["Handroanthus spp.","Roseodendron spp.","Tabebuia spp."],
+  "ipê":["Handroanthus spp.","Roseodendron spp.","Tabebuia spp."],
+  "cumaru":["Dipteryx spp."],"brazilian teak":["Dipteryx spp."],
+  "padauk":["Pterocarpus spp."],"african rosewood":["Pterocarpus spp."],
+  "doussie":["Afzelia spp."],"afzelia":["Afzelia spp."],"khaya":["Khaya spp."],
+  "yew":["Taxus wallichiana","Taxus chinensis","Taxus cuspidata"],
+  "sandalwood":["Osyris lanceolata"],"african cherry":["Prunus africana"],
+  "alerce":["Fitzroya cupressoides"]
+};
+
+// ═══════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════
+
+function normHS(r){ return r.replace(/[.\s\-]/g,'').toUpperCase(); }
+
+function citesCheck(input){
+  if(!input||!input.trim()) return null;
+  const q = input.toLowerCase().trim();
+  const seen = new Set(), matches = [];
+  for(const [sci,d] of Object.entries(CITES)){
+    const sl = sci.toLowerCase();
+    if(sl.includes(q)||q.includes(sl.split(' ')[0])){
+      if(!seen.has(sci)){ seen.add(sci); matches.push({sci,...d}); }
+    }
+  }
+  for(const [common,scis] of Object.entries(CITES_COMMON)){
+    if(q.includes(common)||common.includes(q)){
+      for(const s of scis){
+        if(CITES[s]&&!seen.has(s)){ seen.add(s); matches.push({sci:s,...CITES[s]}); }
+      }
+    }
+  }
+  return matches.length ? matches : null;
+}
+
+function riskLabel(r){ return {low:"Low Risk",standard:"Standard Risk",high:"High Risk"}[r]; }
+function riskDesc(r,country){
+  if(r==="low") return `<strong>${country}</strong> is classified as <strong>Low Risk</strong> under Regulation (EU) 2025/1093. Simplified due diligence under Article 13 applies: the Article 10 risk assessment and Article 11 risk mitigation steps fall away, but the Article 9 information, including geolocation data for every production plot, must still be collected and a Due Diligence Statement must still be submitted.`;
+  if(r==="high") return `<strong>${country}</strong> is classified as <strong>High Risk</strong> under Regulation (EU) 2025/1093. Enhanced due diligence required. Expect heightened scrutiny and a higher probability of competent authority audit.`;
+  return `<strong>${country}</strong> is classified as <strong>Standard Risk</strong> under Regulation (EU) 2025/1093. Full due diligence required, including geolocation data for all relevant production plots and a complete risk assessment.`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// CARD BUILDERS
+// ═══════════════════════════════════════════════════════════
+
+function cardAU(hs4,country){
+  const desc=AU_HS[hs4], note=AU_NOTES[hs4]||null, inScope=!!desc;
+  const badge=inScope?'badge-in':'badge-out';
+  const badgeText=inScope?'In Scope — Due Diligence Required':'Not Regulated by HS Code';
+  let v=inScope
+    ?`HS heading <strong>${hs4}</strong> (<em>${desc}</em>) is a <strong>Regulated Timber Product (RTP)</strong> under Section 5 of the Illegal Logging Prohibition Rules 2024. The importer must implement a written due diligence system and make a customs declaration via the Integrated Cargo System (Community Protection Question) at the time of import.<br><br>Due diligence follows one of two pathways: the <strong>Certified Timber Pathway</strong> (FSC- or PEFC-certified product with verified documentation) or the <strong>Non-Certified Timber Pathway</strong> (requires risk identification, risk assessment, and risk mitigation steps).`
+    :`HS heading <strong>${hs4}</strong> does not appear in the regulated product schedule under the ILP Rules 2024. The general prohibition on importing illegally logged timber applies to <em>all</em> timber products, whether regulated or not. If there is reason to suspect illegal harvesting, the import should not proceed.`;
+  if(note) v+=`<br><br><em>Note: ${note}</em>`;
+  return `<div class="result-card">
+    <div class="card-header">
+      <div class="card-reg"><span class="card-jurisdiction">Australia</span><span class="card-title">Illegal Logging Prohibition Act 2012 &amp; Rules 2024</span></div>
+      <span class="status-badge ${badge}">${badgeText}</span>
+    </div>
+    <div class="card-body">
+      <div class="verdict">${v}</div>
+      <div class="detail-grid">
+        <div class="detail-cell"><div class="dl">Administering Body</div><div class="dv">Dept of Agriculture, Fisheries &amp; Forestry (DAFF)</div></div>
+        <div class="detail-cell"><div class="dl">Declaration Required</div><div class="dv">${inScope?'Yes — ICS Customs Declaration (CPQ)':'No (general prohibition still applies)'}</div></div>
+        <div class="detail-cell"><div class="dl">Country of Harvest</div><div class="dv">${COUNTRY_NAMES[country]||country}</div></div>
+        <div class="detail-cell"><div class="dl">Key Exemptions</div><div class="dv">Consignment &lt; AUD $1,000 · Fully recycled products · Packaging carrying another product</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardEUTR(hs4,country){
+  const desc=EUTR_UKTR_HS[hs4], note=EUTR_UKTR_NOTES[hs4]||null, inScope=!!desc;
+  const badge=inScope?'badge-in':'badge-out';
+  const badgeText=inScope?'In Scope — Due Diligence Required':'Not Regulated by HS Code';
+  let v=inScope
+    ?`HS heading <strong>${hs4}</strong> (<em>${desc}</em>) falls within the product scope of <strong>Regulation (EU) 995/2010 (EUTR)</strong>. The first operator placing this product on the EU market must exercise due diligence: gather information on species, country and region of harvest, and harvesting concession; assess illegality risk; and where risk is non-negligible, implement mitigation measures.`
+    :`HS heading <strong>${hs4}</strong> does not appear to fall within the EUTR product scope. Note: some HS headings are partially covered — verify at the 6–8 digit CN level against the full EUTR Annex.`;
+  if(note) v+=`<br><br><em>Note: ${note}</em>`;
+  return `<div class="result-card">
+    <div class="card-header">
+      <div class="card-reg"><span class="card-jurisdiction">European Union — Transitional</span><span class="card-title">EU Timber Regulation — Regulation (EU) 995/2010</span></div>
+      <span class="status-badge ${badge}">${badgeText}</span>
+    </div>
+    <div class="card-body">
+      <div class="verdict">${v}</div>
+      <div class="transition-note">⚠ <strong>Transition status:</strong> The EUTR remains applicable to timber <em>harvested before 29 June 2023</em> and placed on the EU market before 31 December 2027. For timber harvested after 29 June 2023, EUDR obligations apply. Verify which harvest date applies to your shipment.</div>
+      <div class="detail-grid" style="margin-top:12px;">
+        <div class="detail-cell"><div class="dl">Competent Authorities</div><div class="dv">EU Member State designated authorities</div></div>
+        <div class="detail-cell"><div class="dl">Due Diligence System</div><div class="dv">Information gathering · Risk assessment · Risk mitigation</div></div>
+        <div class="detail-cell"><div class="dl">FLEGT Licence</div><div class="dv">Accepted as evidence of legality (Indonesia VPA active)</div></div>
+        <div class="detail-cell"><div class="dl">EUTR Repeal Date</div><div class="dv">31 December 2027 (pre-29 June 2023 harvested timber)</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardEUDR(hs4,country){
+  const desc=EUDR_HS[hs4], note=EUDR_NOTES[hs4]||null, inScope=!!desc;
+  const risk=EUDR_RISK[country]||'standard';
+  const rBadge=risk==='low'?'badge-out':risk==='high'?'badge-warn':'badge-na';
+  const badge=inScope?'badge-in':'badge-out';
+  const badgeText=inScope?'In Scope — DDS Required':'Not in Annex I by HS Code';
+  let v=inScope
+    ?`HS heading <strong>${hs4}</strong> (<em>${desc}</em>) is listed in <strong>Annex I of Regulation (EU) 2023/1115 (EUDR)</strong>. The operator placing this product on the EU market must submit a <strong>Due Diligence Statement (DDS)</strong> via the EUDR Information System, confirming the product is deforestation-free (cut-off date: <strong>31 December 2020</strong>) and produced in accordance with the laws of the country of origin.<br><br>${riskDesc(risk,COUNTRY_NAMES[country]||country)}`
+    :`HS heading <strong>${hs4}</strong> does not appear to be listed in Annex I of Regulation (EU) 2023/1115. If the CN code is not in Annex I, the product is <strong>out of scope</strong> regardless of whether it contains wood. Verify against the full Annex I at the 8-digit CN level.`;
+  if(note) v+=`<br><br><em>Note: ${note}</em>`;
+  v+=`<br><br><em>Application date: 30 December 2026 (large/medium operators); 30 June 2027 (micro/small operators).</em>`;
+  return `<div class="result-card">
+    <div class="card-header">
+      <div class="card-reg"><span class="card-jurisdiction">European Union</span><span class="card-title">EU Deforestation Regulation — Regulation (EU) 2023/1115 as amended by 2025/2650</span></div>
+      <span class="status-badge ${badge}">${badgeText}</span>
+    </div>
+    <div class="card-body">
+      <div class="verdict">${v}</div>
+      <div class="detail-grid" style="margin-top:12px;">
+        <div class="detail-cell"><div class="dl">Country Risk (Reg. 2025/1093)</div><div class="dv"><span class="status-badge ${rBadge}" style="font-size:9px;padding:2px 6px;">${riskLabel(risk)}</span>&nbsp;${COUNTRY_NAMES[country]||country}</div></div>
+        <div class="detail-cell"><div class="dl">DDS Submission</div><div class="dv">${inScope?'Required — EUDR Information System':'Not required (product not in Annex I)'}</div></div>
+        <div class="detail-cell"><div class="dl">Deforestation Cut-off</div><div class="dv">31 December 2020</div></div>
+        <div class="detail-cell"><div class="dl">Application Date</div><div class="dv">30 Dec 2026 (large/medium) · 30 Jun 2027 (micro/small)</div></div>
+        <div class="detail-cell"><div class="dl">Key Exclusions</div><div class="dv">100% recycled material · Standalone packaging · CN codes not in Annex I</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardUKTR(hs4,country){
+  const desc=EUTR_UKTR_HS[hs4], note=EUTR_UKTR_NOTES[hs4]||null, inScope=!!desc;
+  const badge=inScope?'badge-in':'badge-out';
+  const badgeText=inScope?'In Scope — Due Diligence Required':'Not Regulated by HS Code';
+  let v=inScope
+    ?`HS heading <strong>${hs4}</strong> (<em>${desc}</em>) falls within the product scope of the <strong>UK Timber Regulations (UKTR)</strong> — Timber and Timber Products (Placing on the Market) Regulations 2013. The first operator placing this product on the GB market must implement a due diligence system covering: information gathering (species, country/region of harvest, concession, supplier details); risk assessment; and risk mitigation where the risk of illegal harvesting is non-negligible.<br><br>Traders further down the supply chain must maintain records of suppliers and customers for at least <strong>5 years</strong> and make these available to OPSS on request.`
+    :`HS heading <strong>${hs4}</strong> does not appear to fall within the UKTR product scope. Note: some HS headings are partially covered — verify against the full product list at the 6–8 digit commodity code level.`;
+  if(note) v+=`<br><br><em>Note: ${note}</em>`;
+  return `<div class="result-card">
+    <div class="card-header">
+      <div class="card-reg"><span class="card-jurisdiction">United Kingdom (Great Britain)</span><span class="card-title">UK Timber Regulations 2013 (UKTR)</span></div>
+      <span class="status-badge ${badge}">${badgeText}</span>
+    </div>
+    <div class="card-body">
+      <div class="verdict">${v}</div>
+      <div class="detail-grid" style="margin-top:12px;">
+        <div class="detail-cell"><div class="dl">Enforcing Body</div><div class="dv">Office for Product Safety &amp; Standards (OPSS)</div></div>
+        <div class="detail-cell"><div class="dl">FLEGT Licence</div><div class="dv">Accepted as evidence of legality (UK–Indonesia VPA)</div></div>
+        <div class="detail-cell"><div class="dl">FSC / PEFC Certification</div><div class="dv">Supports risk mitigation — not a standalone substitute for due diligence</div></div>
+        <div class="detail-cell"><div class="dl">Records Retention</div><div class="dv">Minimum 5 years — available to OPSS on request</div></div>
+        <div class="detail-cell"><div class="dl">Northern Ireland</div><div class="dv">EUTR continues to apply directly in NI under the Windsor Framework</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardLacey(hs4,hs2,country){
+  const chapterDesc=LACEY_HS[hs2], inScope=!!chapterDesc;
+  const badge=inScope?'badge-in':'badge-out';
+  const badgeText=inScope?'In Scope — Declaration Required':'Not in Declaration Schedule';
+  let v=inScope
+    ?`HTS Chapter <strong>${hs2}</strong> (${chapterDesc}) is within the APHIS Lacey Act declaration enforcement schedule. The importer of record must file a <strong>Plant and Plant Products Declaration (ACE filing / PPQ Form 505)</strong> at time of import, including the <em>scientific name (genus and species)</em>, value, quantity, and <em>country of harvest</em> for all plant material in the product.<br><br><strong>Phase VII</strong> (effective 1 December 2024) extended declarations to all remaining plant-product HTS codes not 100% composite — covering furniture, tools, sporting goods, cork products, and more.`
+    :`HTS Chapter <strong>${hs2}</strong> does not appear in the APHIS Lacey Act declaration enforcement schedule (Phases I–VII). The general Lacey Act prohibition on trafficking in illegally sourced plants applies to all imports regardless. Due care must still be exercised.`;
+  return `<div class="result-card">
+    <div class="card-header">
+      <div class="card-reg"><span class="card-jurisdiction">United States</span><span class="card-title">Lacey Act 2008 — 16 U.S.C. §§3371–3378 (APHIS Phase VII)</span></div>
+      <span class="status-badge ${badge}">${badgeText}</span>
+    </div>
+    <div class="card-body">
+      <div class="verdict">${v}</div>
+      <div class="detail-grid" style="margin-top:12px;">
+        <div class="detail-cell"><div class="dl">Administering Agency</div><div class="dv">USDA APHIS (declarations) · USFWS / DOJ (enforcement)</div></div>
+        <div class="detail-cell"><div class="dl">Filing System</div><div class="dv">ACE (primary) or LAWGS</div></div>
+        <div class="detail-cell"><div class="dl">Species on Declaration</div><div class="dv">Scientific name (genus + species) mandatory</div></div>
+        <div class="detail-cell"><div class="dl">Country of Harvest</div><div class="dv">${COUNTRY_NAMES[country]||country} — must be declared on PPQ 505</div></div>
+        <div class="detail-cell"><div class="dl">Key Exemptions</div><div class="dv">100% composite/recycled · Zero plant content · Common cultivars · Informal entries &lt; $2,500</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// MAIN
+// ═══════════════════════════════════════════════════════════
+
+function runCheck(){
+  const country=document.getElementById('country').value;
+  const hsRaw=document.getElementById('hscode').value.trim();
+  const species=document.getElementById('species').value.trim();
+  const dests=[...document.querySelectorAll('.dest-item input:checked')].map(c=>c.value);
+  if(!country||!hsRaw){ alert('Please select a Country of Harvest and enter an HS/HTS Code.'); return; }
+  if(!dests.length){ alert('Please select at least one destination market.'); return; }
+  const hs=normHS(hsRaw), hs2=hs.substring(0,2), hs4=hs.substring(0,4);
+  const destLabels={"AU":"Australia (ILP Act)","EU-EUTR":"EU (EUTR)","EU-EUDR":"EU (EUDR)","UK":"UK (UKTR)","US":"US (Lacey Act)"};
+  document.getElementById('input-summary').innerHTML=`
+    <div class="s-item"><span class="s-lbl">Country of Harvest</span><span class="s-val">${COUNTRY_NAMES[country]||country}</span></div>
+    <div class="s-item"><span class="s-lbl">HS Code</span><span class="s-val">${hsRaw.toUpperCase()}</span></div>
+    ${species?`<div class="s-item"><span class="s-lbl">Species</span><span class="s-val">${species}</span></div>`:''}
+    <div class="s-item"><span class="s-lbl">Checking Against</span><span class="s-val">${dests.map(d=>destLabels[d]).join(' · ')}</span></div>`;
+  const cm=citesCheck(species);
+  let citesHTML='';
+  if(cm&&cm.length){
+    const a1=cm.filter(m=>m.a==='I'), a2=cm.filter(m=>m.a==='II');
+    let body='';
+    if(a1.length){ body+=`<strong>APPENDIX I</strong> — Commercial trade generally prohibited; exceptional permit required:<br>`+a1.map(m=>`• ${m.sci} (${m.c})${m.n?' — '+m.n:''}`).join('<br>')+'<br><br>'; }
+    if(a2.length){ body+=`<strong>APPENDIX II</strong> — Valid CITES export permit from country of origin required:<br>`+a2.map(m=>`• ${m.sci} (${m.c})${m.n?' — '+m.n:''}`).join('<br>'); }
+    body+=`<br><br>CITES trade controls apply globally regardless of destination. Import permits may additionally be required under national CITES implementing regulations.`;
+    citesHTML=`<div class="cites-alert"><div class="cites-title">⚠ CITES Listed Species Detected</div><div class="cites-body">${body}</div></div>`;
+  }
+  document.getElementById('cites-alert').innerHTML=citesHTML;
+  let cards='';
+  if(dests.includes('AU'))      cards+=cardAU(hs4,country);
+  if(dests.includes('EU-EUTR')) cards+=cardEUTR(hs4,country);
+  if(dests.includes('EU-EUDR')) cards+=cardEUDR(hs4,country);
+  if(dests.includes('UK'))      cards+=cardUKTR(hs4,country);
+  if(dests.includes('US'))      cards+=cardLacey(hs4,hs2,country);
+  document.getElementById('result-cards').innerHTML=cards;
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function resetForm(){
+  document.getElementById('country').value='';
+  document.getElementById('hscode').value='';
+  document.getElementById('species').value='';
+  document.querySelectorAll('.dest-item input').forEach(c=>c.checked=false);
+  document.getElementById('results').classList.remove('visible');
+  ['result-cards','cites-alert','input-summary'].forEach(id=>document.getElementById(id).innerHTML='');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&document.activeElement.tagName!=='SELECT') runCheck();
+});
+</script>

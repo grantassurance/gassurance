@@ -1,0 +1,10 @@
+{
+  // Temporary preview Worker. At switch-over this name changes to "gassurance".
+  "name": "gassurance-rebuild",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./_site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

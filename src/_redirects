@@ -1,0 +1,6 @@
+# Old addresses (before the October 2026 rebuild) -> new addresses
+/services.html                     /services/                              301
+/tools.html                        /tools/                                 301
+/insights.html                     /insights/                              301
+/tool-eudr-scope-checker.html      /eudr/scope-checker/                    301
+/article-eudr-guidance-2026.html   /eudr/eu-guidance-uk-operators-2026/   301
