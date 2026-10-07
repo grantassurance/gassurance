@@ -118,6 +118,12 @@
     font-size: 11px; font-weight: 500;
     color: var(--accent-deep);
   }
+  /* Tables in articles (dates, comparisons). The wrapper scrolls sideways on phones. */
+  .article-content .table-wrap { overflow-x: auto; margin: 0 0 32px; }
+  .article-content table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+  .article-content th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 10px 14px; border-bottom: 2px solid var(--forest); }
+  .article-content td { padding: 12px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-mid); vertical-align: top; }
+  .article-content td:first-child { white-space: nowrap; color: var(--ink); }
   .article-content strong { font-weight: 500; color: var(--ink); }
   .article-content em { font-style: italic; }
   .article-content a { color: var(--forest-light); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
