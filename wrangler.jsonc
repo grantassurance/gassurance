@@ -1,7 +1,11 @@
 {
-  // Temporary preview Worker. At switch-over this name changes to "gassurance".
-  "name": "gassurance-rebuild",
+  // Live configuration for gassurance.com (switch-over, October 2026).
+  "name": "gassurance",
   "compatibility_date": "2026-09-01",
+  "routes": [
+    { "pattern": "gassurance.com", "custom_domain": true }
+  ],
+  "workers_dev": true,
   "assets": {
     "directory": "./_site",
     "html_handling": "auto-trailing-slash",
