@@ -1,0 +1,22 @@
+  /* Shared navigation additions: tighter spacing for six links, and a menu button on small screens. */
+  .nav-toggle, .nav-menu-btn { display: none; }
+  @media (max-width: 1200px) {
+    .nav-links { gap: 22px; }
+  }
+  @media (max-width: 900px) {
+    .nav-menu-btn {
+      display: block; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest);
+      padding: 8px 0;
+    }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start; gap: 18px;
+      background: var(--warm-white); padding: 20px 24px 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:focus-visible + .nav-menu-btn { outline: 2px solid var(--forest-light); outline-offset: 4px; }
+  }
+  .nav-links a.active { color: var(--forest); }
