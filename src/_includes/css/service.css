@@ -171,3 +171,6 @@
     .service-items { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
   }
+
+  /* An odd number of items: the last one spans both columns, so no empty grey cell. */
+  .service-items .service-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
