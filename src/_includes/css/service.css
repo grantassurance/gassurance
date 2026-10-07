@@ -174,3 +174,6 @@
 
   /* An odd number of items: the last one spans both columns, so no empty grey cell. */
   .service-items .service-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* One-line summary under a linked item (hub pages: tools and further reading). */
+  .service-item .item-summary { display: block; margin: 6px 0 0 15px; font-size: 13px; color: var(--ink-light); }
