@@ -20,3 +20,12 @@
     .nav-toggle:focus-visible + .nav-menu-btn { outline: 2px solid var(--forest-light); outline-offset: 4px; }
   }
   .nav-links a.active { color: var(--forest); }
+
+  /* Shared footer additions: eight links do not fit one row on small screens, so they wrap. */
+  .footer-links { flex-wrap: wrap; row-gap: 12px; }
+  @media (max-width: 1200px) {
+    .footer-links { column-gap: 22px; }
+  }
+  @media (max-width: 900px) {
+    .footer-links { justify-content: center; gap: 12px 20px; }
+  }
