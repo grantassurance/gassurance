@@ -1,10 +1,9 @@
 {
-  // Live configuration for gassurance.com (switch-over, October 2026).
-  "name": "gassurance",
+  // PREVIEW ONLY. This file belongs to the "redesign" branch and the temporary
+  // gassurance-rebuild Worker. It has no custom domain, so it cannot touch gassurance.com.
+  // NEVER upload this file to main: main keeps its own wrangler.jsonc, which serves the live site.
+  "name": "gassurance-rebuild",
   "compatibility_date": "2026-09-01",
-  "routes": [
-    { "pattern": "gassurance.com", "custom_domain": true }
-  ],
   "workers_dev": true,
   "assets": {
     "directory": "./_site",

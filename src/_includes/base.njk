@@ -14,13 +14,14 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+{% if heroImage %}:root { --hero-image: url("{{ heroImage }}"); }
+{% endif %}{% pageCss "chrome" %}
 {% pageCss css %}
-{% pageCss "chrome" %}
 </style>
 </head>
-<body>
+<body{% if heroImage %} class="has-hero"{% endif %}>
 
 <nav{% if navClass %} class="{{ navClass }}"{% endif %}>
   <a href="/" class="nav-logo">
@@ -31,7 +32,18 @@
   <label for="nav-toggle" class="nav-menu-btn">Menu</label>
   <div class="nav-links">
     {%- for item in nav %}
+    {%- if item.children %}
+    <div class="nav-group">
+      <a href="{{ item.url }}" class="nav-group-link{% if item.key == navActive %} active{% endif %}"{% if item.key == navActive %} aria-current="page"{% endif %}>{{ item.label }}<svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></a>
+      <div class="nav-sub">
+        {%- for child in item.children %}
+        <a href="{{ child.url }}"><span class="nav-sub-label">{{ child.label }}</span><span class="nav-sub-note">{{ child.note }}</span></a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- else %}
     <a href="{{ item.url }}"{% if item.key == navActive %} class="active" aria-current="page"{% endif %}>{{ item.label }}</a>
+    {%- endif %}
     {%- endfor %}
     <a href="/#contact" class="nav-cta">Get in touch</a>
   </div>
@@ -40,13 +52,13 @@
 {{ content | safe }}
 
 <footer{% if footerClass %} class="{{ footerClass }}"{% endif %}>
-  <div style="display:flex; flex-direction:column; line-height:1.2;">
+  <div class="footer-brand">
     <span class="footer-logo">Grant <span>Assurance</span></span>
-    <span style="font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8fad94; margin-top:3px;">Assurance for responsible sourcing</span>
+    <span class="footer-tag">Assurance for responsible sourcing</span>
   </div>
   <div class="footer-links">
     {%- for item in nav %}
-    <a href="{{ item.url }}">{{ item.label }}</a>
+    <a href="{{ item.url }}">{{ item.footerLabel or item.label }}</a>
     {%- endfor %}
     <a href="/#about">About</a>
     <a href="/#contact">Contact</a>
