@@ -27,3 +27,4 @@ Photographs:
 - Hub or service page, beside the service list: <img class="service-photo" src="/images/NAME.jpg" alt="What the photo shows" loading="lazy"> after the service-desc paragraph. Not shown on phones.
 - Every position is optional. A page with no photo in a position simply leaves it out.
 - Write alt text that says what the photo shows. Use alt="" only where the photo repeats what the adjacent heading already says (cards).
+
