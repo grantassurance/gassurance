@@ -5,6 +5,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.png": "favicon.png" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
+  // Photographs: everything in src/images/ is published at /images/.
+  eleventyConfig.addPassthroughCopy({ "src/images": "images" });
 
   // Inline a page's stylesheet from src/_includes/css/<name>.css.
   eleventyConfig.addShortcode("pageCss", (name) =>
