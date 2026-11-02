@@ -4,3 +4,6 @@
 /insights.html                     /insights/                              301
 /tool-eudr-scope-checker.html      /eudr/scope-checker/                    301
 /article-eudr-guidance-2026.html   /eudr/eu-guidance-uk-operators-2026/   301
+
+# Carbon service page moved to its own hub, October 2026
+/services/carbon-ghg/              /carbon/                                301
